@@ -1,14 +1,9 @@
-# Mechanic Stock – Sistema de Estoque de Peças Automotivas
+# Mechanic Stock – Sistema de Estoque Automotivo
 
 ## Descrição
 
-O **Mechanic Stock** é um sistema simples de controle de estoque de peças automotivas, desenvolvido em **Java puro** com fins didáticos.  
+O **Mechanic Stock** é um sistema simples de controle de estoque de peças e lubrificanteds do meio automotivo, desenvolvido em java com fins de ser utilizado em ambiente de trabalho para comprir e resolver necessidades especificas, 
 Ele permite gerenciar entradas e saídas de produtos, controlar quantidades em estoque e registrar o histórico de movimentações.
-
-O projeto é ideal para praticar:
-- **Programação Orientada a Objetos**
-- Uso de **Map** e **List**
-- Manipulação de dados via **terminal**
 
 ## Funcionalidades
 
@@ -48,3 +43,26 @@ O projeto é ideal para praticar:
 Execute o programa:
 
     java Main
+
+## Rodando...
+
+        === Mechanic Stock ===
+
+        Adicionar Produto
+
+        Entrada de Produto
+
+        Saída de Produto
+
+        Listar Produtos
+
+        Histórico de Movimentações
+
+        Sair
+        Escolha uma opção:
+
+
+- Digite `1` para adicionar um novo produto.
+- Digite `2` ou `3` para registrar entrada ou saída.
+- Digite `4` para listar produtos atuais.
+- Digite `5` para ver o histórico de movimentações.
