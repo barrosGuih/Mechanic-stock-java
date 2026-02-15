@@ -1,7 +1,7 @@
-package src.service;
+package service;
 
-import src.model.Produto;
-import src.model.Movimentacao;
+import model.Produto;
+import model.Movimentacao;
 import java.util.*;
 
 public class EstoqueService {
@@ -36,6 +36,20 @@ public class EstoqueService {
             }   
         } else{
             System.out.println("Produto nao encontrado");
+        }
+    }
+
+    public void listarProdutos(){
+        System.out.println("== Produtos em Estoque ==");
+        for(Produto p: produtos.values()){
+            System.out.println(p);
+        }
+    }
+
+    public void listarHistorico(){
+        System.out.println("== Historico de Movimentacao ==");
+        for(Movimentacao m : historico){
+            System.out.println(m);
         }
     }
     
