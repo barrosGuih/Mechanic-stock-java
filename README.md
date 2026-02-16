@@ -38,7 +38,7 @@ Ele permite gerenciar entradas e saídas de produtos, controlar quantidades em e
 
 2. Compile todas as classes (Windows PowerShell):
    
-       javac -d . src\model\Produto.java src\model\Movimentacao.java src\service\EstoqueService.java src\Main.java
+       javac -d . model\Produto.java model\Movimentacao.java service\EstoqueService.java Main.java
 
 Execute o programa:
 
