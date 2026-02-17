@@ -1,20 +1,34 @@
 import model.Produto;
 import service.EstoqueService;
+import model.Empresa;
 import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class Main{
     public static void main(String[]args){
+        
         EstoqueService estoque = new EstoqueService();
         Scanner sc = new Scanner(System.in);
         Integer opcao;
+
+        try (Connection conn = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/teste?serverTimezone=UTC",
+            "root",
+            "SUA_SENHA"
+        )) {
+            System.out.println("Conectado com sucesso!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         do {
             System.out.println("\n== Mechanic Stock ==");
             System.out.println("1. Adicionar Produto");
             System.out.println("2. Entrada de Produto");
-            System.out.println("3. Saída de Produto");
+            System.out.println("3. Saida de Produto");
             System.out.println("4. Listar Produtos");
-            System.out.println("5. Histórico de Movimentações");
+            System.out.println("5. Historico de Movimentacoes");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = sc.nextInt();
@@ -48,7 +62,7 @@ public class Main{
                     System.out.println("Saindo...");
                     break;
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println("Opcao invalida.");
             }
         } while(opcao != 0);
 
