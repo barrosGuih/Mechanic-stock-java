@@ -38,11 +38,11 @@ Ele permite gerenciar entradas e saídas de produtos, controlar quantidades em e
 
 2. Compile todas as classes (Windows PowerShell):
    
-       javac -d . model\Produto.java model\Movimentacao.java service\EstoqueService.java Main.java
+       javac -cp "lib/mysql-connector-j-9.6.0.jar;." Main.java model\Produto.java dao\ProdutoDAO.java util\conexao\Conexao.java
 
 Execute o programa:
 
-    java Main
+       java -cp "lib/mysql-connector-j-9.6.0.jar;." Main
 
 ## Rodando...
 
