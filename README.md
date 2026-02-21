@@ -1,12 +1,11 @@
-🛠️ Mechanic Stock – Sistema de Estoque Automotivo
+# 🛠️ Mechanic Stock – Sistema de Estoque Automotivo
 
-📌 Descrição
+## 📌 Descrição
 
-O Mechanic Stock é um sistema de controle de estoque automotivo desenvolvido em Java, com o objetivo de gerenciar peças, lubrificantes, pneus e demais itens utilizados em oficinas mecânicas.
+>O Mechanic Stock é um sistema de controle de estoque automotivo desenvolvido em Java, com o objetivo de gerenciar peças, lubrificantes, pneus e demais itens utilizados em oficinas mecânicas.
+>O projeto foi criado devido a demanda do dia a dia do trabalho e para fins academicos o projeto conta com foco em boas práticas de programação, utilizando arquitetura em camadas (MVC + DAO) e integração com banco de dados MySQL, permitindo o controle de entradas, saídas, estoque atual e histórico de movimentações.
 
-O projeto foi criado devido a demanda do dia a dia do trabalho e para fins academicos o projeto conta com foco em boas práticas de programação, utilizando arquitetura em camadas (MVC + DAO) e integração com banco de dados MySQL, permitindo o controle de entradas, saídas, estoque atual e histórico de movimentações.
-
-🚀 Funcionalidades
+## 🚀 Funcionalidades
 
 ➕ Cadastro de produtos (nome, quantidade, etc.)
 
@@ -21,20 +20,21 @@ O projeto foi criado devido a demanda do dia a dia do trabalho e para fins acade
 💾 Persistência de dados com MySQL
 
 
-🛠️ Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
-Java
+    Java
 
-JDBC
+    JDBC
 
-MySQL
+    MySQL
 
-Paradigma: Orientação a Objetos
+    Paradigma: Orientação a Objetos
 
-Arquitetura: MVC + DAO
+    Arquitetura: MVC + DAO
 
 
-📂 Estrutura do Projeto
+## 📂 Estrutura do Projeto
+```
 mechanic-stock/
 ├─ src/
 │  ├─ model/
@@ -52,12 +52,15 @@ mechanic-stock/
 ├─ lib/
 │  └─ mysql-connector-j-9.6.0.jar
 └─ README.md
-🗄️ Banco de Dados
+```
+
+## 🗄️ Banco de Dados
 
 O projeto utiliza MySQL.
-Certifique-se de criar o banco e as tabelas antes de executar o sistema.
+>Certifique-se de criar o banco e as tabelas antes de executar o sistema.
 
-Exemplo de tabelas:
+## Exemplo de tabelas:
+```
 CREATE DATABASE mechanic_stock;
 USE mechanic_stock;
 
@@ -75,17 +78,19 @@ CREATE TABLE movimentacao (
     data_hora DATETIME NOT NULL,
     FOREIGN KEY (produto_id) REFERENCES produto(id)
 );
+```
 
-▶️ Como Compilar e Executar
+## ▶️ Como Compilar e Executar
 
-1️⃣ Acesse a pasta do projeto
-cd mechanic-stock
-2️⃣ Compile o projeto (Windows)
-javac -cp "lib/mysql-connector-j-9.6.0.jar;." Main.java model\*.java dao\*.java service\*.java util\conexao\Conexao.java
-3️⃣ Execute o sistema
-java -cp "lib/mysql-connector-j-9.6.0.jar;." Main
+## 1️⃣ Acesse a pasta do projeto
+```cd mechanic-stock```
+## 2️⃣ Compile o projeto (Windows)
+```javac -cp "lib/mysql-connector-j-9.6.0.jar;." Main.java model\*.java dao\*.java service\*.java util\conexao\Conexao.java```
+## 3️⃣ Execute o sistema
+```java -cp "lib/mysql-connector-j-9.6.0.jar;." Main```
 
-🖥️ Menu do Sistema
+## 🖥️ Menu do Sistema
+```
 == Mechanic Stock ==
 1. Adicionar Produto
 2. Entrada de Produto
@@ -94,8 +99,7 @@ java -cp "lib/mysql-connector-j-9.6.0.jar;." Main
 5. Listar Histórico
 0. Sair
 Escolha uma opção:
-
-
+```
 📌 Status do Projeto
 
 Em desenvolvimento
