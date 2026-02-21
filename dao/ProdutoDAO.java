@@ -25,23 +25,80 @@ public class ProdutoDAO {
         }
     }
 
-    public void listar(){
+    public void listar() {
         String sql = "SELECT * FROM produtos";
 
         try (Connection conn = Conexao.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()){
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
 
-                while(rs.next()){
-                    System.out.println(
+            while (rs.next()) {
+                System.out.println(
                         rs.getInt("id") + " - " +
-                        rs.getString("nome") + " |  Qtd: " + 
-                        rs.getInt("quantidade")
-                    );
-                }
-            
+                                rs.getString("nome") + " |  Qtd: " +
+                                rs.getInt("quantidade"));
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void atualizarQuantidade(int produtoId, int quantidade) {
+        String sql = "UPDATE produtos SET quantidade = quantidade + ? WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, quantidade);
+            stmt.setInt(2, produtoId);
+            stmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int buscarQuantidade(int produtoId) {
+        String sql = "SELECT quantidade FROM produtos WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, produtoId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("quantidade");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
+    public Produto buscarPorId(int produtoId) {
+        String sql = "SELECT * FROM produtos WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, produtoId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new Produto(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getInt("quantidade"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

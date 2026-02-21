@@ -1,43 +1,65 @@
 package service;
 
 import dao.MovimentacaoDAO;
-import model.ProdutoDAO;
+import dao.ProdutoDAO;
 import model.Movimentacao;
+import model.Produto;
 
 public class EstoqueService {
 
     private ProdutoDAO produtoDAO = new ProdutoDAO();
     private MovimentacaoDAO movimentacaoDAO = new MovimentacaoDAO();
 
+    public void adicionarProduto(int id, String nome, int quantidade) {
+        Produto produto = new Produto(id, nome, quantidade);
+        produtoDAO.inserir(produto);
+    }
+
+    public void listarProdutos() {
+        produtoDAO.listar();
+    }
+
     public void entradaProduto(int produtoId, int quantidade) {
+        Produto produto = produtoDAO.buscarPorId(produtoId);
+
+        if (produto == null) {
+            System.out.println("Produto não encontrado.");
+            return;
+        }
+
         produtoDAO.atualizarQuantidade(produtoId, quantidade);
 
         Movimentacao mov = new Movimentacao(
                 null,
                 produtoId,
                 quantidade,
-                "Entrada");
+                "ENTRADA"
+        );
 
         movimentacaoDAO.inserir(mov);
     }
 
-    public void saidaProduto(Int produtoId, Int quantidade) {
-        int estoqueAtual = produtoDAO.buscarQuantidade(produtoId);
+    public void saidaProduto(int produtoId, int quantidade) {
+        Produto produto = produtoDAO.buscarPorId(produtoId);
 
-        if (estoqueAtual < quantidade) {
-            if (p.getQuantidade() >= quantidade) {
-                sytem.out.println("Estoque insuficiente");
-                return;
-            }
+        if (produto == null) {
+            System.out.println("Produto não encontrado.");
+            return;
         }
 
-        produto.DAO.atualizarQuantidade(produtoId, -quantidade);
+        if (produto.getQuantidade() < quantidade) {
+            System.out.println("Estoque insuficiente.");
+            return;
+        }
+
+        produtoDAO.atualizarQuantidade(produtoId, -quantidade);
 
         Movimentacao mov = new Movimentacao(
                 null,
                 produtoId,
                 quantidade,
-                "Saida");
+                "SAIDA"
+        );
 
         movimentacaoDAO.inserir(mov);
     }
@@ -45,5 +67,4 @@ public class EstoqueService {
     public void listarHistorico() {
         movimentacaoDAO.listar();
     }
-
 }
